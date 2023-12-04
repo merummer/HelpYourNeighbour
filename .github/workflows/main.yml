@@ -1,0 +1,21 @@
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: Deploy to all-inkl
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout and pull data
+        uses: appleboy/ssh-action@master
+        with: 
+          host:  w01e9333.kasserver.com
+          username: ssh-w01e9387
+          key: ${{ secrets.hyn_deploy }}
+          script: |
+            cd /www/htdocs/w01e9387/helpyourneighbour.at
+            git pull
