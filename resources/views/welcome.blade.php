@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>help your neighbour</title>
+        <title>help your neighbour HYN</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
