@@ -19,3 +19,4 @@ jobs:
           script: |
             cd /www/htdocs/w01e9387/HelpYourNeighbour
             git pull
+            php artisan migrate
