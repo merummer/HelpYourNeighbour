@@ -18,5 +18,8 @@ jobs:
           key: ${{ secrets.hyn_deploy }}
           script: |
             cd /www/htdocs/w01e9387/HelpYourNeighbour
+            php /user/bin/composer install
             git pull
             php artisan migrate
+            
+
