@@ -22,4 +22,5 @@ jobs:
             git pull
             php artisan migrate
             
+            
 
