@@ -18,7 +18,6 @@ jobs:
           key: ${{ secrets.hyn_deploy }}
           script: |
             cd /www/htdocs/w01e9387/HelpYourNeighbour
-            php /usr/bin/composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev
             git pull
             php artisan migrate
             
