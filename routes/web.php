@@ -28,4 +28,19 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/addblog',[BlogController::class, 'store'])->middleware(['auth'])->name('addblog');
+Route::get('/blog',function (){
+
+    $posts = \App\Models\Blog::all();
+    $posts = $posts->sortBy([
+        ['created_at', 'asc'],
+    ]);
+
+
+    return view('/blog', ['posts' => $posts]);
+
+
+
+})->name('blog');
+
 require __DIR__.'/auth.php';
