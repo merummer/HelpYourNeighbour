@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,13 +32,13 @@ Route::middleware('auth')->group(function () {
 Route::post('/addblog',[BlogController::class, 'store'])->middleware(['auth'])->name('addblog');
 Route::get('/blog',function (){
 
-    $posts = \App\Models\Blog::all();
-    $posts = $posts->sortBy([
+    $blogs = \App\Models\Blog::all();
+    $blogs = $blogs->sortBy([
         ['created_at', 'asc'],
     ]);
 
 
-    return view('/blog', ['posts' => $posts]);
+    return view('/blog', ['blogs' => $blogs]);
 
 
 

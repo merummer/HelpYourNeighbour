@@ -16,7 +16,7 @@ class BlogController extends Controller
 
         auth()
             ->user()
-            ->blog()
+            ->blogs()
             ->create($attributes);
 
         return back()

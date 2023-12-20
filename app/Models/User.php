@@ -43,7 +43,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function blog() {
+    public function blogs() {
         return $this->hasMany(Blog::class);
     }
 }

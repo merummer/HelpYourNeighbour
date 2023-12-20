@@ -49,29 +49,26 @@
                             </x-primary-button>
                         </div>
                     </form>
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            @foreach($blogs as $blog)
+                                <div >
+                                    <h2>{{ $blog->title }}</h2>
+                                    <div >
+                                        <p>{{$blog->content}}</p>
+                                    </div>
+                                </div>
 
+                            @endforeach
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @foreach(Auth::user()->posts as $post)
-                        <div >
-                            <h2>{{ $post->title }}</h2>
-                            <div >
-                                <p>{{$post->content}}</p>
-                            </div>
                         </div>
+                    </div>
 
-                    @endforeach
+
                 </div>
             </div>
         </div>
     </div>
+
 
 </x-app-layout>
