@@ -41,6 +41,8 @@
                                         id="content"
                                         value="{{ old('content', 'Vorgabe') }}"
                                         name="content">
+
+
                             </div>
                             <div> </div>
 
