@@ -27,8 +27,5 @@ class HelpController extends Controller
 
     }
 
-    public function edit(Help $help){
-        return view('help.edit', ['helps' => $help]);
-    }
 
 }

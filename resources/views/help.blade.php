@@ -84,13 +84,7 @@
             @foreach($helps as $help)
                 <div>
                     <h2>{{ $help->title }}</h2>
-                    <div class="flex justify-end space-x-5">
 
-                        <a href="/notes/{{ $help->id }}/edit">
-                            <x-pencil />
-                            <span class="sr-only">{{ __('Edit note') }}</span>
-                        </a>
-                    </div>
                 </div>
             @endforeach
 
