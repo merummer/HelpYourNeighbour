@@ -3,6 +3,8 @@
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Blog;
+use App\Models\Help;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +34,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/help', function (){
-    $helps = \App\Models\Help::all();
+    $helps = Help::all();
     return view('/help', ['helps' => $helps]);
 
     return view('help');});
@@ -54,5 +56,13 @@ Route::get('/blog',function (){
 
 
 })->name('blog');
+
+Route::get('/requests', function () {
+
+    $helps = Help::all();
+
+    return view('requests.indexrequest', ['helps' => $helps]);
+})  ->name('requests.indexrequest')
+    ->middleware(['auth']);
 
 require __DIR__.'/auth.php';
