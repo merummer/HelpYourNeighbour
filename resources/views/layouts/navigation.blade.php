@@ -23,6 +23,10 @@
                     <x-nav-link :href="route('help')" :active="request()->routeIs('help')">
                         {{ __('Hilfsanfragen') }}
                     </x-nav-link>
+
+                    <x-nav-link :href="route('requests')" :active="request()->routeIs('requests')">
+                        {{ __('Offene Hilfsanfragen') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -77,6 +81,10 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('requests')" :active="request()->routeIs('requests')">
+                {{ __('Offene Hilfsanfragen') }}
             </x-responsive-nav-link>
         </div>
 
