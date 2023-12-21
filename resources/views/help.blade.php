@@ -22,7 +22,7 @@
         @endif
         <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 text-gray-900 dark:text-gray-100">
-                <form action="/helps" method="post">
+                <form action="/help" method="post">
                     @csrf
                     <div>
                         @error('title')
@@ -75,16 +75,23 @@
                         </x-primary-button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-    <div class="py-12 space-y-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
-                <div class="p-6 text-gray-900 dark:text-gray-100 space-y-6">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
+                    <div class="p-10 text-gray-900 dark:text-gray-100">
+                        @foreach($helps as $help)
+                            <div >
+                                <h2>{{ $help->title }}</h2>
+                                <div>
+                                    <p>{{$help->content}}</p>
+                                </div>
+                                <p>{{$help->location}}</p>
+                            </div>
 
+                        @endforeach
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </x-app-layout>
