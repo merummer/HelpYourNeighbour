@@ -75,23 +75,19 @@
                         </x-primary-button>
                     </div>
                 </form>
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
-                    <div class="p-10 text-gray-900 dark:text-gray-100">
-                        @foreach($helps as $help)
-                            <div >
-                                <h2>{{ $help->title }}</h2>
-                                <div>
-                                    <p>{{$help->content}}</p>
-                                </div>
-                                <p>{{$help->location}}</p>
-                            </div>
-
-                        @endforeach
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
+        <div class="p-10 text-gray-900 dark:text-gray-100">
+            @foreach($helps as $help)
+                <div>
+                    <h2>{{ $help->title }}</h2>
+
+                </div>
+            @endforeach
+
+        </div>
 
 </x-app-layout>

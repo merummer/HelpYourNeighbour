@@ -9,6 +9,7 @@ class Help extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id',
         'title',
         'content',
         'location',
