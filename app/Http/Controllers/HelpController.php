@@ -24,6 +24,7 @@ class HelpController extends Controller
 
         return back()->with('success', 'Saved');
 
+
     }
 
 }
