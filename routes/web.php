@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HelpController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,10 +30,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+Route::get('/help', function (){
+    $helps = \App\Models\Help::all();
+    return view('/help', ['helps' => $helps]);
+
+    return view('help');});
+Route::post('/help', [HelpController::class, 'store'])->middleware(['auth'])->name('help');
+
+
+
 Route::post('/addblog',[BlogController::class, 'store'])->middleware(['auth'])->name('addblog');
 Route::get('/blog',function (){
 
-    $blogs = \App\Models\Blog::all();
+    $blogs = Blog::all();
     $blogs = $blogs->sortBy([
         ['created_at', 'asc'],
     ]);
