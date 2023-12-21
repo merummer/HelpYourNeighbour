@@ -75,23 +75,25 @@
                         </x-primary-button>
                     </div>
                 </form>
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
-                    <div class="p-10 text-gray-900 dark:text-gray-100">
-                        @foreach($helps as $help)
-                            <div >
-                                <h2>{{ $help->title }}</h2>
-                                <div>
-                                    <p>{{$help->content}}</p>
-                                </div>
-                                <p>{{$help->location}}</p>
-                            </div>
-
-                        @endforeach
-
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
+        <div class="p-10 text-gray-900 dark:text-gray-100">
+            @foreach($helps as $help)
+                <div>
+                    <h2>{{ $help->title }}</h2>
+                    <div class="flex justify-end space-x-5">
+
+                        <a href="/notes/{{ $help->id }}/edit">
+                            <x-pencil />
+                            <span class="sr-only">{{ __('Edit note') }}</span>
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
 
 </x-app-layout>
