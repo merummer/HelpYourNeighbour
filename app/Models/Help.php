@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Help extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'title',
         'content',
-        'location'
+        'location',
+        'user_id'
     ];
 
     public function user(){
