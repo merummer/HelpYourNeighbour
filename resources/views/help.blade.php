@@ -89,6 +89,7 @@
                         @csrf
                         @method('DELETE')
 
+
                         <button>
                             <x-trash class="text-red-500 jus"></x-trash>
                             <span class="sr-only">{{ __('Remove help') }}</span>
