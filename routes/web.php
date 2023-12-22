@@ -39,7 +39,8 @@ Route::get('/help', function (){
 
     return view('help');});
 Route::post('/help', [HelpController::class, 'store'])->middleware(['auth'])->name('help');
-
+Route::delete('/helps/{help}', [HelpController::class, 'destroy'])
+    ->middleware(['auth']);
 
 
 Route::post('/addblog',[BlogController::class, 'store'])->middleware(['auth'])->name('addblog');
