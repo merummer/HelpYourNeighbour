@@ -32,16 +32,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::get('/help', function (){
     $helps = Help::all();
-    return view('/help', ['helps' => $helps]);
+    return view('/help/help', ['helps' => $helps]);
 
     return view('help');});
 Route::post('/help', [HelpController::class, 'store'])->middleware(['auth'])->name('help');
 Route::delete('/helps/{help}', [HelpController::class, 'destroy'])
     ->middleware(['auth']);
 
+Route::get('/helps/{help:id}/edit', [HelpController::class, 'edit'])
+    ->middleware('auth');
+
+Route::patch('/helps/{help}', [HelpController::class, 'update'])
+    ->middleware('auth');
 
 Route::post('/addblog',[BlogController::class, 'store'])->middleware(['auth'])->name('addblog');
 Route::get('/blog',function (){
