@@ -24,7 +24,12 @@ class HelpController extends Controller
 
         return back()->with('success', 'Saved');
 
+    }
+    public function destroy(Help $help) {
 
+        $help->delete();
+
+        return back()->with('success', 'Your note has been deleted');
     }
 
 
