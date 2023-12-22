@@ -82,9 +82,20 @@
     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
         <div class="p-10 text-gray-900 dark:text-gray-100">
             @foreach($helps as $help)
-                <div>
+                <div class="p-10 text-gray-900 dark:text-gray-100">
                     <h2>{{ $help->title }}</h2>
+                    <div class="flex justify-end space-x-5">
+                    <form action="/helps/{{ $help->id }}" method="post">
+                        @csrf
+                        @method('DELETE')
 
+                        <button>
+                            <x-trash class="text-red-500 jus"></x-trash>
+                            <span class="sr-only">{{ __('Remove help') }}</span>
+                        </button>
+
+                    </form>
+                    </div>
                 </div>
             @endforeach
 
