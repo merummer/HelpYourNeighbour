@@ -84,6 +84,7 @@
                             </div>
 
 
+
                             <div class="text-sm flex ">
                                 <a href="/helps/{{$help->id}}/edit">
                                 <x-pencil />
