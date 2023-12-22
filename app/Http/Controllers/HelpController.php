@@ -32,5 +32,22 @@ class HelpController extends Controller
         return back()->with('success', 'Your note has been deleted');
     }
 
+    public function edit(Help $help){
+
+        return view('help.edith', ['helps' => $help]);
+    }
+
+    public function update(Help $help){
+
+        $attributes = request()->validate([
+            'title' => 'required|max:200',
+            'content' => 'required|min:2|max:255',
+            'location' =>'required|min:2|max:255'
+        ]);
+
+        $help->update($attributes);
+
+        return back()->with('success', 'Saved');
+    }
 
 }
