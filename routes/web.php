@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Blog;
 use App\Models\Help;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +72,9 @@ Route::get('/requests', function () {
     return view('requests.indexrequest', ['helps' => $helps]);
 })  ->name('requests.indexrequest')
     ->middleware(['auth']);
+
+Route::get('auth/google',[GoogleAuthController::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleAuthController::class, 'callbackGoogle'] );
+
 
 require __DIR__.'/auth.php';
