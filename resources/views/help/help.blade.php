@@ -20,11 +20,8 @@
                 <p>{{ session('success') }}</p>
             </div>
         @endif
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-                <form action="/help" method="post">
-                    @csrf
-                    <div>
+        <div>
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         @error('title')
                         <div class="text-2xl text-red-500 font-medium">
                             {{ $message }}
@@ -37,13 +34,12 @@
                                 type="text"
                                 id="title"
                                 value="{{ old('title') }}"
-                                name="title">
+                                name="title"/>
                     </div>
                     <div>
                         @error('content')
                         <div class="text-2xl text-red-500 font-medium">
                             {{ $message }}
-                        </div>
                         @enderror
                         <label for="content">
                             {{ __('Beschreibung der Anfrage') }}
@@ -53,6 +49,7 @@
                                 id="content"
                                 value="{{ old('content') }}"
                                 name="content">
+                        </div>
                     </div>
                     <div>
                         @error('location')
@@ -75,19 +72,39 @@
                         </x-primary-button>
                     </div>
                 </form>
-                </div>
+        </div>
+
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
+                <div class="p-6 text-gray-900 dark:text-gray-100 space-y-6">
+                    @foreach($helps as $help)
+                        <div class="flex space-x-5">
+                            <div class="flex justify-between ">
+                                <p class="text-gray-500 "><a href="/helps/{{$help->id}}">{{$help->title}} </a></p>
+                                <span class="text-right text-gray-500 dark:text-gray-700">{{$help->content}}</span>
+                            </div>
+
+
+
+                            <div class="text-sm flex ">
+                                <a href="/helps/{{$help->id}}/edit">
+                                <x-pencil />
+                                <span class="sr-only">{{ __('Edit help') }}</span>
+                                </a>
+                                <form action="/helps/{{ $help->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+
+                                 <button>
+                                    <x-trash class="text-red-500 jus"></x-trash>
+                                    <span class="sr-only">{{ __('Remove help') }}</span>
+                                 </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+
             </div>
-        </div>
+            </div>
     </div>
-    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg ">
-        <div class="p-10 text-gray-900 dark:text-gray-100">
-            @foreach($helps as $help)
-                <div>
-                    <h2>{{ $help->title }}</h2>
-
-                </div>
-            @endforeach
-
-        </div>
-
 </x-app-layout>
