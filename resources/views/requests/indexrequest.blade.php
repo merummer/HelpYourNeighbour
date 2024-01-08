@@ -23,7 +23,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100 space-y-6">
                     @foreach($helps as $help)
                         <!-- Hier muss auch status ergänzt werden, dass in arbeit und der nutzer ist -->
-                        @if($help->user_id == Auth::user()->id)
+                        @if($help->user_id == Auth::user()->id && $help->status == 1)
                             <div class="flex items-center space-x-4 p-4 border-b">
                                 <div class="flex-grow">{{ $help->title }}</div>
                                 <div class="text-xs flex-grow">{{ $help->content }}</div>
@@ -47,11 +47,18 @@
                                             <div class="modal-body">
                                                 Bewerten Sie Ihren Helfer bzw. Ihre Helferin. Anfrage: {{ $help->title }}
                                             </div>
-                                            <div class="modal-footer">
-                                                <x-primary-button data-dismiss="modal">
-                                                    {{ ('Bewertung absenden und Anfrage schließen') }}
-                                                </x-primary-button>
-                                            </div>
+
+                                            <form action="/requests/{{ $help->id }}/closerequest" method="post">
+                                                @csrf
+                                                @method('PATCH')
+
+                                                <div class="modal-footer">
+                                                    <x-primary-button>
+                                                        {{ ('Bewertung absenden und Anfrage schließen') }}
+                                                    </x-primary-button>
+                                                </div>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
@@ -95,7 +102,7 @@
                                                 Bewerten Sie die hilfebedürftige Person. Anfrage: {{ $help->title }}
                                             </div>
                                             <div class="modal-footer">
-                                                <x-primary-button data-dismiss="modal">
+                                                <x-primary-button>
                                                     {{ ('Bewertung absenden und Angebot schließen') }}
                                                 </x-primary-button>
                                             </div>

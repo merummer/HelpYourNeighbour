@@ -50,4 +50,11 @@ class HelpController extends Controller
         return back()->with('success', 'Saved');
     }
 
+    public function close(Help $help){
+        $help->status = 0;
+        $help->update();
+
+        return back()->with('success', 'Saved');
+    }
+
 }

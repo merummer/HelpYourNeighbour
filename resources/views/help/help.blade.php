@@ -21,6 +21,8 @@
             </div>
         @endif
         <div>
+            <form action="/help" method="post">
+                @csrf
                     <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         @error('title')
                         <div class="text-2xl text-red-500 font-medium">

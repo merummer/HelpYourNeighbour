@@ -70,4 +70,7 @@ Route::get('/requests', function () {
 })  ->name('requests.indexrequest')
     ->middleware(['auth']);
 
+Route::patch('/requests/{help}/closerequest', [HelpController::class, 'close'])
+    ->middleware(['auth']);
+
 require __DIR__.'/auth.php';
